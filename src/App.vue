@@ -7,7 +7,7 @@
 // const Arr: Array<string> = ["1", "2", "3"]
 // Arr.splice(2, 0, 'pika')
 // 通过ref包装的值会变为响应式
-import {ref, Ref, isRef, shallowRef, triggerRef, customRef} from 'vue'
+import {ref, Ref, isRef, shallowRef, triggerRef, customRef, watch, reactive} from 'vue'
 // let message = ref<string>("皮卡")
 // let message:Ref<string> = ref("皮卡")
 
@@ -16,37 +16,44 @@ import {ref, Ref, isRef, shallowRef, triggerRef, customRef} from 'vue'
 //   age: 18
 // })
 
-let message = shallowRef({
-  name: 'pika',
-  age: 12
+
+let message = ref<string>('hello')
+let message2 = ref<string>('hi')
+
+// 如果是ref需要手动开启deep才能深度监视，对于reactive不用，默认为深度watch了
+let message3 = reactive({
+  bar: {
+    foo: 'lala',
+    name: 'pika'
+  }
 })
 
-function MyRef<T>(value:T) {
-  return customRef((track, trigger) => {
-    // track收集依赖
-    return {
-      get() {
-        track()
-        return value
-      },
-      set(newValue:T) {
-        console.log("set")
-        value = newValue
-        trigger()
-      }
-    }
-  })
-}
+// watch([message, message2, message3], (newValue, oldValue) => {
+//   console.log("新的", newValue)
+//   console.log("旧的", newValue)
+// }, {
+//   // 第三个参数对于多层的需要开启deep配置项
+//   deep: true
+// })
 
-let message2 = MyRef<string>("xixi")
+// watch(() => message3.bar.name, (newValue, oldValue) => {
+//   // 对于多参数会输出多个
+//   console.log("新的", newValue)
+//   console.log("旧的", newValue)
+// }, {
+//   // 第三个参数对于多层的需要开启deep配置项
+//   deep: true
+// })
+
+
+watch (() => message3.bar.name, (newVal, oldVal) => {
+  // console.log("新的", newVal)
+  // console.log("旧的", oldVal)
+  console.log("变化啦", newVal == oldVal)
+})
 
 const changeMsg = () => {
-  // message.value = 'change msg'
-  console.log(isRef(message))
-  // message2.value.name = 'saber'
-  message.value.name = 'saber'
-  triggerRef(message)
-  message2.value = 'yoyo'
+
 }
 
 
@@ -55,9 +62,11 @@ const changeMsg = () => {
 <template>
   <div>
     <button @click="changeMsg">change</button>
-    <div>{{message}}</div>
-    <div>{{message2}}</div>
-    <!-- <div>{{message2.name}}</div> -->
+    <!-- <input v-model="message" type="text">
+    <input v-model="message2" type="text">
+    <input v-model="message3.bar.foo" type="text"> -->
+    <input v-model="message3.bar.name" type="text">
+
   </div>
   <!-- <HelloWorld msg="Vite + Vue" /> -->
 </template>
