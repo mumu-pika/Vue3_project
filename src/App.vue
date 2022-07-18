@@ -7,7 +7,7 @@
 // const Arr: Array<string> = ["1", "2", "3"]
 // Arr.splice(2, 0, 'pika')
 // 通过ref包装的值会变为响应式
-import {ref, Ref, isRef, shallowRef, triggerRef, customRef, watch, reactive} from 'vue'
+import {ref, Ref, isRef, shallowRef, triggerRef, customRef, watch, reactive, watchEffect} from 'vue'
 // let message = ref<string>("皮卡")
 // let message:Ref<string> = ref("皮卡")
 
@@ -46,10 +46,16 @@ let message3 = reactive({
 // })
 
 
-watch (() => message3.bar.name, (newVal, oldVal) => {
-  // console.log("新的", newVal)
-  // console.log("旧的", oldVal)
-  console.log("变化啦", newVal == oldVal)
+// watch (() => message3.bar.name, (newVal, oldVal) => {
+//   // console.log("新的", newVal)
+//   // console.log("旧的", oldVal)
+//   console.log("变化啦", newVal == oldVal)
+// })
+
+watchEffect((oninvalidate)=>{
+  oninvalidate(()=>{
+    
+  })
 })
 
 const changeMsg = () => {
