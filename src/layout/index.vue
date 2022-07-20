@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import Menu from './Menu/index.vue'
-import Header from './Header/index.vue'
+import Header from './Header/index.vue' 
 import Content from './Content/index.vue'
 import { reactive, ref } from 'vue';
 
@@ -32,6 +32,7 @@ import { reactive, ref } from 'vue';
     display: flex;
     flex-direction: column;
     flex: 1;
+    border: 1px solid #ccc;
   }
 }
 
