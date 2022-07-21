@@ -1,30 +1,29 @@
 <template>
   <div class="content">
-    <Suspense>
-      <template #default>
-        <A></A>
-      </template>
-      <template #fallback>
-        <div>
-          loading...
+    <div class="wrap">
+      <transition-group>
+        <div class="item" v-for="item in list">
+          {{item}}
         </div>
-      </template>
-    </Suspense>
+      </transition-group>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, markRaw, reactive, ref } from 'vue'
+import { defineAsyncComponent, markRaw, reactive, ref, onActivated, onDeactivated } from 'vue'
 import Card from '../../components/Card/index.vue'
 
 import Dialog from '../../components/Dialog/index.vue'
 // import A from '../../components/A/index.vue' 
-
+import Login from '../../components/Login/index.vue'
+import Register from '../../components/Register/index.vue'
 let name = ref<string>('footer')
 
 
-// 异步组件
-const A = defineAsyncComponent(() => import("../../components/A/index.vue"))
+
+const list = reactive<number[]>([1,2,3,4,5])
+
 
 
 </script>
@@ -47,6 +46,7 @@ const A = defineAsyncComponent(() => import("../../components/A/index.vue"))
     height: 2rem;
     margin: 1rem;
     border: 1px solid skyblue;
+
     div {
       font-size: 0.8rem;
       margin: 0.5rem;
@@ -54,5 +54,13 @@ const A = defineAsyncComponent(() => import("../../components/A/index.vue"))
       cursor: pointer;
     }
   }
+
+  wrap {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+
 }
 </style>
