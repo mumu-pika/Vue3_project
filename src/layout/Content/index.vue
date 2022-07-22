@@ -1,29 +1,41 @@
 <template>
   <div class="content">
-    <div class="wrap">
-      <transition-group>
-        <div class="item" v-for="item in list">
-          {{item}}
-        </div>
-      </transition-group>
+    <input v-model="num.current" step="10" type="number">
+    <div>
+      {{num.tweenedNumber.toFixed(0)}}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, markRaw, reactive, ref, onActivated, onDeactivated } from 'vue'
+import { gsap } from "gsap";
+import { defineAsyncComponent, markRaw, reactive, ref, onActivated, onDeactivated, watch, getCurrentInstance } from 'vue'
 import Card from '../../components/Card/index.vue'
 
 import Dialog from '../../components/Dialog/index.vue'
 // import A from '../../components/A/index.vue' 
 import Login from '../../components/Login/index.vue'
 import Register from '../../components/Register/index.vue'
+
+import _ from 'lodash' // 如果lodash报错需要安装ts声明文件库 npm i --save-dev @types/lodash
+
 let name = ref<string>('footer')
 
+const num = reactive({
+  current: 0,
+  tweenedNumber: 0
+})
 
+watch(() => num.current, (newValue, oldValue) => {
+  // 产生过渡
+  gsap.to(num, {
+    duration: 1,
+    tweenedNumber: newValue
+  })
+})
 
-const list = reactive<number[]>([1,2,3,4,5])
-
+let instance = getCurrentInstance()
+console.log(instance)
 
 
 </script>
@@ -55,12 +67,24 @@ const list = reactive<number[]>([1,2,3,4,5])
     }
   }
 
-  wrap {
+  .wrap {
     display: flex;
     flex-wrap: wrap;
-    
+    width: calc(30px * 10);
+    .item {
+      width: 30px;
+      height: 30px;
+      // text-align: center;
+      // line-height: 30px;
+      border: 1px solid #bfa;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .move {
+      transition: all 1s;
+    }
   }
-
 
 }
 </style>
