@@ -3,12 +3,27 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import layout from './layout/index.vue'
 
+// import renderDom from'./App.tsx'
+
+// const getNum = (num:number) => {
+//   console.log(num, '我收到啦')
+// }
+
+
+import Dialog from '/src/components/Dialog/index.vue'
+import { ref } from 'vue'
+let flag = ref<boolean>(true)
+let title = ref<string>("我是一只小狗狗")
 
 
 </script>
 
 <template>
-  <layout/>
+  <!-- <layout/> -->
+  <button @click="flag=!flag">change {{flag}}</button>
+  <div>标题 {{title}}</div>
+  <Dialog v-model:title="title" v-model.pika="flag"/>
+  <!-- <renderDom @on-click="getNum" title="我是标题！"></renderDom> -->
 </template>
 
 <style lang="less">

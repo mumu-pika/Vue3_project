@@ -17,7 +17,6 @@ import { reactive, ref } from 'vue';
 
 
 
-
 // 我们需要拿一下子组件的实例，首先通过ref
 
 </script>

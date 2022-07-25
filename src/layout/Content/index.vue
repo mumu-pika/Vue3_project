@@ -1,9 +1,7 @@
 <template>
   <div class="content">
-    <input v-model="num.current" step="10" type="number">
-    <div>
-      {{num.tweenedNumber.toFixed(0)}}
-    </div>
+    <A></A>
+    <B></B>
   </div>
 </template>
 
@@ -13,9 +11,11 @@ import { defineAsyncComponent, markRaw, reactive, ref, onActivated, onDeactivate
 import Card from '../../components/Card/index.vue'
 
 import Dialog from '../../components/Dialog/index.vue'
-// import A from '../../components/A/index.vue' 
 import Login from '../../components/Login/index.vue'
 import Register from '../../components/Register/index.vue'
+
+import A from './A.vue'
+import B from './B.vue'
 
 import _ from 'lodash' // 如果lodash报错需要安装ts声明文件库 npm i --save-dev @types/lodash
 

@@ -20,12 +20,23 @@ class Bus implements BusClass {
     this.list = {}
   }
 
-  emit() {
+  // 触发当前实例上的事件。附加参数都会传给监听器回调
+  // emit的参数是多个的，我们使用解构的方式展开
+  emit(name:string, ...args:Array<any>) {
+    let eventName:Array<Function> = this.list[name]
+    eventName.forEach(fn => {
+      fn.apply(this, args)
+    })
 
   }
+
+  // 监听当前实例上的自定义事件。事件可以由 emit 触发。回调函数会接收所有传入事件触发函数的额外参数。
   on(name:string, callback:Function) {
     // 获取注册过的方法, 如果没有注册过的话，就返回一个空数组
     let fn:Array<Function> = this.list[name] || []
-    
+    fn.push(callback)
+    this.list[name] = fn
   }
 }
+
+export default new Bus()
