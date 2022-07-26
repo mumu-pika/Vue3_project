@@ -1,18 +1,15 @@
 <template>
   <div class="A">
-    <button @click="emitB">派发一个事件</button>
+    <h1>我是A组件</h1>
+    <!-- <button @click="emitB">派发一个事件</button> -->
   </div>
 </template>
 
 <script setup lang="ts">
-// 使用自定义Bus
-import Bus from '../Bus'
-let flag = false
+import { useAttrs, useSlots } from 'vue'
+let attr = useAttrs()
 
-const emitB = () => {
-  flag =!flag
-  Bus.emit('on-click', flag)
-}
+console.log(attr)
 
 </script>
 

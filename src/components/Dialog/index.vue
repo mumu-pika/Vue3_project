@@ -18,6 +18,9 @@ type Props = {
   modelModifiers?: {
     // 这里是在v-model后面添加了.pika这个修饰符，打印出来的结果为true
     pika: boolean
+  },
+  titleModifiers?: {
+    pika2: boolean
   }
 }
 
