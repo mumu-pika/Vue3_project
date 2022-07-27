@@ -17,6 +17,9 @@ import 'animate.css'
 import Loading from './components/loading'
 
 
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
+
 const Mit = mitt()
 
 declare module 'vue' {
@@ -31,7 +34,11 @@ type Filter = {
 
 declare module '@vue/runtime-core' {
   export interface ComponentCustomProperties {
-    $filters: Filter
+    $filters: Filter,
+    $loading:{
+      show: () => void,
+      hide: () => void
+    }
   }
 }
 
@@ -48,9 +55,8 @@ app.config.globalProperties.$filters = {
 }
 
 app.use(Loading)
-
+app.use(ElementPlus)
 
 app.component('Card',Card).mount('#app')
-
 
 

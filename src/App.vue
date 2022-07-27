@@ -1,30 +1,27 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import layout from './layout/index.vue'
 
-import A from './components/A.vue'
+const css = useCssModule('xixi')
 
-// import useBase64 from './hooks/index'
+console.log(css)
 
-// useBase64({ el: '#img' }).then(res=>{
-//   console.log(res.baseUrl)
-// })
-
+// 一般我们会用在tsx的结构中, 类似于下面的结构
+// return (<div class={css}></div>)
 
 
 </script>
 
 <template>
-  <div>
-    {{$filters.format('hhhh')}}
+  <div :class="[xixi.pikaCss, xixi.pikaCss2]">
+    哈哈哈哈哈哈
   </div>
 </template>
 
-<style lang="less">
-html, body, #app {
-  height: 100%;
-  overflow: hidden;
+<style module="xixi">
+.pikaCss {
+  color: yellowgreen;
+}
+.pikaCss2 {
+  font-size: 50px;
 }
 
 </style>

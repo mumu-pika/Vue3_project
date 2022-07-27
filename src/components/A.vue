@@ -1,23 +1,18 @@
 <template>
   <div class="A">
-    <h1>我是A组件</h1>
-    <!-- <button @click="emitB">派发一个事件</button> -->
+    我是插槽
+    <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useAttrs, useSlots } from 'vue'
-let attr = useAttrs()
-
-console.log(attr)
 
 </script>
 
 <style lang="less" scoped>
-  .A {
-    width: 200px;
-    height: 200px;
-    color: #eee;
-    background-color: skyblue;
-  }
+// 这里样式没有生效，我们需要借助插槽选择器，:slotted()
+:slotted(.a) {
+  color: hotpink;
+}
+
 </style>

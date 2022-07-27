@@ -9,10 +9,13 @@ export default {
 
     // 第二步，我们需要将虚拟DOM转为真实DOM, 使用render()
     render(vnode, document.body)
+    // 这里我们无法直接通过vnode.component获取到setupState
+    // vnode.component?.setupState
+    // 采取另外一个方法：exposed, 此外需要Loading暴露出来(defineExpose)所需的函数
 
-    vnode.component?.setupState
-
-
-    console.log(vnode)
+    app.config.globalProperties.$loading = {
+      show: vnode.component?.exposed?.show,
+      hide: vnode.component?.exposed?.hide
+    }
   }
 }
