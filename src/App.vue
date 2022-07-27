@@ -1,18 +1,19 @@
 <script setup lang="ts">
+  import { ref } from 'vue'
+  const message = ref<string>('pika')
+  const div = ref<HTMLElement>()
 
-const css = useCssModule('xixi')
-
-console.log(css)
-
-// 一般我们会用在tsx的结构中, 类似于下面的结构
-// return (<div class={css}></div>)
-
-
+  const change = () => {
+    message.value = 'saber'
+    console.log(div.value?.innerText)
+  }
 </script>
 
 <template>
-  <div :class="[xixi.pikaCss, xixi.pikaCss2]">
-    哈哈哈哈哈哈
+  <div>
+    <input v-model="message" type="text">
+    <div ref="div">{{message}}</div>
+    <button @click="change">change</button>
   </div>
 </template>
 
