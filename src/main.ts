@@ -20,6 +20,10 @@ import Loading from './components/loading'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
+
+import {createPinia} from 'pinia'
+
+const pinia = createPinia()
 const Mit = mitt()
 
 declare module 'vue' {
@@ -56,6 +60,7 @@ app.config.globalProperties.$filters = {
 
 app.use(Loading)
 app.use(ElementPlus)
+app.use(pinia)
 
 app.component('Card',Card).mount('#app')
 
