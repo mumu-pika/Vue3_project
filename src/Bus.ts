@@ -39,4 +39,5 @@ class Bus implements BusClass {
   }
 }
 
+// 这里暴露出去全局bus
 export default new Bus()

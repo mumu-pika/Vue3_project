@@ -10,7 +10,7 @@ export const useTestStore = defineStore(Names.TEST, {
 
   // computed 可以修饰一些值
   getters: {
-
+      
   },
 
   // methods 可以做同步和异步的操作，提交state
