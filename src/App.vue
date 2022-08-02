@@ -53,8 +53,8 @@ const changeAge = () => {
 
 
 Test.$subscribe((args, state) => {
-  console.log('args:', args)
-  console.log("state:", state)
+  // console.log('args:', args)
+  // console.log("state:", state)
 
 }, {
   detached: true, //和$onAction()的第二个参数设置为true的效果是一样的
@@ -66,7 +66,7 @@ Test.$subscribe((args, state) => {
 Test.$onAction((args) => {
 
   args.after(() => {
-    console.log('after')
+    // console.log('after')
   })
 
   console.log(args)
