@@ -1,88 +1,40 @@
-<script setup lang="ts">
-import { storeToRefs } from 'pinia';
-import { useTestStore } from './store'
-
-const Test = useTestStore()
-
-// 解构store
-// 注意！！ 在pinia中解构是不具有响应式的,
-// 为此我们需要借助pinia的api--> storeToRefs()
-// storeToRefs先将store去外壳toRaw转为对象，之后遍历store的key,对于state的key包上toRef，使得state是有响应的
-//   function storeToRefs(store) {
-//     // See https://github.com/vuejs/pinia/issues/852
-//     // It's easier to just use toRefs() even if it includes more stuff
-//     if (isVue2) {
-//         // @ts-expect-error: toRefs include methods and others
-//         return toRefs(store);
-//     }
-//     else {
-//         store = toRaw(store);
-//         const refs = {};
-//         for (const key in store) {
-//             const value = store[key];
-//             if (isRef(value) || isReactive(value)) {
-//                 // @ts-expect-error: the key is state or getter
-//                 refs[key] =
-//                     // ---
-//                     toRef(store, key);
-//             }
-//         }
-//         return refs;
-//     }
-// }
-// const { name, age } = storeToRefs(Test)
-
-const { user, name } = storeToRefs(Test)
-
-
-// 进行state的修改
-const change = () => {
-  // console.log(name, "@@@", age)
-  // Test.age++
-  Test.setUser()
-}
-
-const reset = () => {
-  // $reset()恢复state的值
-  Test.$reset()
-}
-
-const changeAge = () => {
-  Test.setAge()
-}
-
-
-Test.$subscribe((args, state) => {
-  // console.log('args:', args)
-  // console.log("state:", state)
-
-}, {
-  detached: true, //和$onAction()的第二个参数设置为true的效果是一样的
-  deep: true,
-  flush: 'post'
-})
-
-
-Test.$onAction((args) => {
-
-  args.after(() => {
-    // console.log('after')
-  })
-
-  console.log(args)
-})
-
-</script>
-
 <template>
-  <span>这里使用了pinia:</span>
-  <div>{{ user }}---{{ name }}</div>
-  <div>getters: {{ Test.newName }}</div>
-  <button @click="change">change</button>
-  <button @click="reset">reset</button>
-  <button @click="changeAge">changeAge</button>
+  <div>
+    pika 历史记录
+  </div>
+  <div>
+    <!-- path -->
+    <button @click="toPage('/')">Login</button>
+    <button @click="toPage('/register')">Register</button>
+
+    <!-- 历史记录前进和后退 -->
+    <button @click="next()">next</button>
+    <button @click="prev()">prev</button>
+
+  </div>
+  <hr>
+  <router-view></router-view>
 </template>
 
+<script setup lang="ts">
+import { useRouter } from 'vue-router'
 
-<style lang="less" scoped>
+const router = useRouter()
+const toPage = (url: string) => {
+  router.replace(url)
+}
+
+const next = () => {
+  // Router.go(delta: number): void
+  // 参数表示跳转的步数
+  router.go(1)
+}
+
+const prev = () => {
+  // 相当于 router.go(-1)
+  router.back()
+}
+
+</script>
+<style>
 </style>
