@@ -24,13 +24,12 @@
 
 <script setup lang="ts">
 import {data} from './list.json'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter} from 'vue-router'
+
+
 
 // useRouter()返回router实例
 const router = useRouter()
-
-// useRoute()返回当前路由地址
-// const route = useRoute()
 
 // 这里通过使用插件JSON to TS
 //选中json的数据，按下ctrl+shift+alt+s 就能获取到json数据的类型了
@@ -41,19 +40,26 @@ type Item = {
 }
 
 const toDetail = (item: Item) => {
-  // query传参
+  // //query传参
   // router.push({
   //   path:'/register',
   //   query: item
   // })
 
-  // params传参
+  // // params传参
+  // router.push({
+  //   name:'Register',
+  //   params: item
+  // })
+
+  // 动态路由传参
   router.push({
     name:'Register',
-    params: item
+    params:{
+      id:item.id
+    }
   })
 }
-
 
 </script>
 <style>

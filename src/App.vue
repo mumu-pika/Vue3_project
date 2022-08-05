@@ -21,7 +21,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const toPage = (url: string) => {
-  router.replace(url)
+  router.push(url)
 }
 
 const next = () => {

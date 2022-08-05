@@ -66,9 +66,26 @@ import './style.css'
 
 
 
-import { createApp } from 'vue'
+import { createApp, createVNode, render } from 'vue'
 import App from './App.vue'
+// 引入状态管理
 import { createPinia, PiniaPluginContext } from 'pinia'
+
+// 引入路由
+import router from './router'
+
+// 引入element UI
+import ElementUi from 'element-plus'
+import 'element-plus/dist/index.css'
+
+// // 引入自定义的进度条, 之后将其转为VNode
+// import loadingBar from './components/views/loadingBar.vue'
+
+// const Vnode = createVNode(loadingBar)
+
+// // console.log(Vnode)
+// render(Vnode, document.body)
+
 
 // 设置类型别名
 type Options = {
@@ -124,4 +141,8 @@ pinia.use(piniaPlugin({
 
 const app = createApp(App)
 app.use(pinia)
+app.use(router)
+app.use(ElementUi)
+
+
 app.mount('#app')

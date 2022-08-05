@@ -10,7 +10,7 @@ import { resolve } from 'path'
 export default defineConfig({
   base:'./', // 公共基础路径
   plugins: [
-    vue(), 
+    vue(),
     vueJsx(),
     AutoImport({
       imports:['vue'],
