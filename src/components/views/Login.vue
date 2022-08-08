@@ -25,6 +25,7 @@ import type {FormItemRule, FormInstance} from 'element-plus'
 
 import { ElMessage } from 'element-plus'
 
+import axios from 'axios'
 
 const router = useRouter()
 
@@ -40,7 +41,7 @@ type Rules = {
 
 const form = ref<FormInstance>()
 
-
+// 表单数据
 const formInline = reactive<From>({
   user: '',
   password:''
@@ -68,16 +69,33 @@ const onSubmit = () => {
   form.value?.validate((validate)=>{
     // validate是一个boolean值，会判断验证是否通过
     if(validate) {
+      initRouter()
       // 验证通过，跳转
-      router.push('/Index')
+      // router.push('/Index')
       // 存储token
-      localStorage.setItem('pikaToken','hhh')
+      // localStorage.setItem('pikaToken','hhh')
     }else {
       // 验证失败，提示信息
       ElMessage.error('请输入完整信息')
     }
   })
 }
+
+// 实现动态路由, 去请求后端接口
+const initRouter = async() => {
+  const result = await axios.get('http://localhost:4321/login', {params: formInline})
+  result.data.route.forEach((v: any)=>{
+    router.addRoute({
+      path: v.path,
+      // name: v.name,
+      component: () =>  import(/* @vite-ignore */ `../${v.component}`)
+    })
+  })
+
+  router.push('/index')
+}
+
+
 
 </script>
 

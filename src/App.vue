@@ -13,11 +13,16 @@
 
   </div>
   <hr>
-  <router-view></router-view>
+  <router-view #default="{route, Component}" >
+    <transition :enter-active-class="` animate__animated ${route.meta.transition}`">
+      <component :is="Component"></component>
+    </transition>
+  </router-view>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import 'animate.css'
 
 const router = useRouter()
 const toPage = (url: string) => {

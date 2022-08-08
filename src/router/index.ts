@@ -17,10 +17,11 @@ render(Vnode, document.body)
 // 定义一些路由
 // 每个路由都需要映射到一个组件。
 
-// ts做标注
+// ts做标注, 为meta数据做类型
 declare module 'vue-router' {
   interface RouteMeta {
-    title: string
+    title: string,
+    transition?: string
   }
 }
 
@@ -30,20 +31,46 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     component: () => import('@/components/views/Login.vue'),
     meta: {
-      title:'登录页面'
+      title:'登录页面',
+      transition:'animate__bounceInDown'
     }
   },
   {
     path: '/index',
     component: () => import('@/components/views/Index.vue'),
     meta: {
-      title: '首页'
+      title: '首页',
+      transition:'animate__fadeInLeft'
     }
   },
 ]
 
 const router  = createRouter({
   history: createWebHistory(),
+  // 注册路由滚动行为
+  scrollBehavior: (to, from, savePosition) => {
+    // `to` 和 `from` 都是路由地址
+    // `savePosition` 记录位置的数值，可以为空
+    // 如果有位置数值的话
+    // if (savePosition) {
+    //   return savePosition
+    // }else {
+    //   // 如果为空，这里返回一个默认没有滚动的数值
+    //   return {
+    //     top: 0
+    //   }
+    // }
+
+    // 此外还支持异步
+    return new Promise ((r)=>{
+      setTimeout(()=>{
+        r({
+          top: 999
+        })
+      }, 2000)
+    })
+
+  },
   routes
 })
 
@@ -58,13 +85,14 @@ router.beforeEach((to, from, next) => {
   //from：获取到从哪个路由跳转过来的信息
   //next: next() 放行  next(path) 放行  next(false)中断当前导航
   // 如果要跳转的地方是白名单中的路径或者用户已经登录
-  if(whiteList.includes(to.path) || localStorage.getItem('pikaToken')){
-    console.log("放行！")
-    next()
-  }else {
-    console.log("不放行!")
-    next('/')
-  }
+  // if(whiteList.includes(to.path) || localStorage.getItem('pikaToken')){
+  //   console.log("放行！")
+  //   next()
+  // }else {
+  //   console.log("不放行!")
+  //   next('/')
+  // }
+  next()
 })
 
 // 全局后置路由
