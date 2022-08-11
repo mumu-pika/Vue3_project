@@ -9,7 +9,6 @@ function Fate() {
     setColor(color == 'hotpink' ? 'skyblue' : 'hotpink')
   }
 
-
   return (
     <>
       <div>fate stay night</div>

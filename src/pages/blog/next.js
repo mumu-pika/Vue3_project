@@ -1,1 +1,1 @@
-export default () => <div>NextBlog page</div>
+export default function next(){return(<div>NextBlog page</div>)}
