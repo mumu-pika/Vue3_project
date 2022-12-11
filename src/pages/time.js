@@ -1,30 +1,26 @@
-import React, { useState } from  'react'
-import dynamic from 'next/dynamic'
+import React, { useState } from "react";
+import dynamic from "next/dynamic";
 
+const One = dynamic(import("../components/pika"));
 
-const One = dynamic(import('../components/pika'))
-
-function Time () {
-  const [ nowTime, setTime ] = useState(Date.now())
+function Time() {
+  const [nowTime, setTime] = useState(Date.now());
 
   const changeTime = async () => {
-    const moment = await import('moment')
+    const moment = await import("moment");
 
-    setTime(moment.default(Date.now()).format())
-  }
+    setTime(moment.default(Date.now()).format());
+  };
 
   return (
     <>
       <div>显示时间为:{nowTime} </div>
-      <One/>
+      <One />
       <div>
         <button onClick={changeTime}>改变时间格式</button>
-
       </div>
     </>
-  )
-
+  );
 }
 
-
-export default Time
+export default Time;

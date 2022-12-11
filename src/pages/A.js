@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 function A() {
   return (
@@ -11,8 +11,7 @@ function A() {
         </a>
       </Link>
     </>
-  )
+  );
 }
 
-
-export default A
+export default A;

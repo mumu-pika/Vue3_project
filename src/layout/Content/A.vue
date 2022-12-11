@@ -6,19 +6,19 @@
 </template>
 
 <script setup lang="ts">
-  import { getCurrentInstance } from 'vue'
+import { getCurrentInstance } from "vue";
 
-  // 获取当前组件实例
-  const instance = getCurrentInstance()
+// 获取当前组件实例
+const instance = getCurrentInstance();
 
-  const emit = () =>{
-    instance?.proxy?.$Bus.emit('on-click', 'xixi')
-  }
+const emit = () => {
+  instance?.proxy?.$Bus.emit("on-click", "xixi");
+};
 </script>
 
 <style lang="less" scoped>
-  .header {
-    height: 5rem;
-    border: 1px solid #eee ;
-  }
+.header {
+  height: 5rem;
+  border: 1px solid #eee;
+}
 </style>

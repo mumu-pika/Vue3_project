@@ -5,34 +5,34 @@
       <div>副标题</div>
     </div>
     <div class="card-content" v-if="content">
-      {{content}}
+      {{ content }}
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  type Props = {
-    content?: string
-  }
+type Props = {
+  content?: string;
+};
 
-  defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <style lang="less" scoped>
 @border: #ccc;
-  .card {
-    border: 1px solid @border;
-    &:hover {
-      box-shadow: 0 0 10px @border;
-    }
-    &-header {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem;
-      border-bottom: 1px solid @border;
-    }
-    &-content {
-      padding: 1rem;
-    }
+.card {
+  border: 1px solid @border;
+  &:hover {
+    box-shadow: 0 0 10px @border;
   }
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid @border;
+  }
+  &-content {
+    padding: 1rem;
+  }
+}
 </style>

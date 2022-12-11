@@ -1,2 +1,3 @@
-export default function one () { return (<div>Lazyloading Component</div>) }
-
+export default function one() {
+  return <div>Lazyloading Component</div>;
+}

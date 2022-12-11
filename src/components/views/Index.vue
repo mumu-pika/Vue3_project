@@ -7,17 +7,14 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-const router = useRouter()
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const toPage = (url: string) => {
   router.push({
-    path: url
-  })
-}
-
+    path: url,
+  });
+};
 </script>
 
-<style>
-  
-</style>
+<style></style>

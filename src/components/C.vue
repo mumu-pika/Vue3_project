@@ -4,12 +4,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <style lang="less" scoped>
-
 .C {
   width: 200px;
   height: 200px;
