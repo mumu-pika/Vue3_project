@@ -94,7 +94,8 @@ const initRouter = async () => {
     router.addRoute({
       path: v.path,
       // name: v.name,
-      component: () => import(/* @vite-ignore */ `../${v.component}`),
+
+      component: () => defineAsyncComponent (() => import(/* @vite-ignore */`../${v.component}`)) ,
     });
   });
 
