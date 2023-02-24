@@ -11,23 +11,23 @@
 // import TreeItem from '../Tree/index.vue'
 
 type TreeList = {
-  name: string;
-  icon?: string;
-  children?: TreeList[] | [];
-};
+  name: string
+  icon?: string
+  children?: TreeList[] | []
+}
 
 type Props = {
-  data?: TreeList[];
-};
+  data?: TreeList[]
+}
 
-defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <!-- 递归组件实现方式二，与方式一相比的改动在于为这个组件设定一个name并暴露出去（也就是Vue2的写法） -->
 <script lang="ts">
 export default {
-  name: "TreeItem",
-};
+  name: 'TreeItem',
+}
 </script>
 
 <style lang="less" scoped></style>

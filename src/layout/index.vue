@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import Menu from "./Menu/index.vue";
-import Header from "./Header/index.vue";
-import Content from "./Content/index.vue";
-import { reactive, ref } from "vue";
+import Menu from './Menu/index.vue'
+import Header from './Header/index.vue'
+import Content from './Content/index.vue'
+import { reactive, ref } from 'vue'
 
 // 我们需要拿一下子组件的实例，首先通过ref
 </script>

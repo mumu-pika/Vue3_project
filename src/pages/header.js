@@ -1,5 +1,5 @@
-import MyHeader from "./myHeader";
-import { Button } from "antd";
+import MyHeader from './myHeader'
+import { Button } from 'antd'
 
 export default function Header() {
   return (
@@ -10,5 +10,5 @@ export default function Header() {
         <Button>我是按钮</Button>
       </div>
     </>
-  );
+  )
 }

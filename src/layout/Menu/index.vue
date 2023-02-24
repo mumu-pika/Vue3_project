@@ -6,45 +6,45 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
-import Tree from "../../components/Tree/index.vue";
+import { reactive } from 'vue'
+import Tree from '../../components/Tree/index.vue'
 
 type TreeList = {
-  name: string;
-  icon?: string;
-  children?: TreeList[] | [];
-};
+  name: string
+  icon?: string
+  children?: TreeList[] | []
+}
 
 const data = reactive<TreeList[]>([
   {
-    name: "001",
+    name: '001',
     children: [
       {
-        name: "001-001",
+        name: '001-001',
         children: [
           {
-            name: "001-001-001",
+            name: '001-001-001',
           },
         ],
       },
     ],
   },
   {
-    name: "002",
+    name: '002',
     children: [
       {
-        name: "002-001",
+        name: '002-001',
       },
     ],
   },
   {
-    name: "003",
+    name: '003',
   },
   {
-    name: "004",
+    name: '004',
     children: [],
   },
-]);
+])
 </script>
 
 <style lang="less" scoped>

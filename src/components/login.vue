@@ -23,19 +23,19 @@
 </template>
 
 <script setup lang="ts">
-import { data } from "./list.json";
-import { useRouter } from "vue-router";
+import { data } from './list.json'
+import { useRouter } from 'vue-router'
 
 // useRouter()返回router实例
-const router = useRouter();
+const router = useRouter()
 
 // 这里通过使用插件JSON to TS
 //选中json的数据，按下ctrl+shift+alt+s 就能获取到json数据的类型了
 type Item = {
-  name: string;
-  price: string;
-  id: number;
-};
+  name: string
+  price: string
+  id: number
+}
 
 const toDetail = (item: Item) => {
   // //query传参
@@ -52,12 +52,12 @@ const toDetail = (item: Item) => {
 
   // 动态路由传参
   router.push({
-    name: "Register",
+    name: 'Register',
     params: {
       id: item.id,
     },
-  });
-};
+  })
+}
 </script>
 <style>
 .login {

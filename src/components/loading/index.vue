@@ -5,24 +5,24 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-let isShow = ref<boolean>(false);
+import { ref } from 'vue'
+let isShow = ref<boolean>(false)
 
 // 显示的回调
 const show = () => {
-  isShow.value = true;
-};
+  isShow.value = true
+}
 
 // 隐藏的回调
 const hide = () => {
-  isShow.value = false;
-};
+  isShow.value = false
+}
 // 暴露出去
 defineExpose({
   isShow,
   show,
   hide,
-});
+})
 
 // 上面两个函数之后会出现在创建的虚拟DOM的setupState上面，之后我们就需要将这两个函数挂载到全局
 </script>

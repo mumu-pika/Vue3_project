@@ -8,13 +8,13 @@ module.exports = {
   plugins: [],
   extends: [
     // ESLint
-    "eslint:recommended",
+    'eslint:recommended',
     // TypeScript
-    "plugin:@typescript-eslint/recommended",
+    'plugin:@typescript-eslint/recommended',
     // Jest
     // "plugin:jest/recommended",
     // Prettier
-    "plugin:prettier/recommended",
+    'plugin:prettier/recommended',
   ],
   // rules: {
   //   // 关闭规则
@@ -34,4 +34,4 @@ module.exports = {
   //   "jest/prefer-to-have-length": "warn",
   //   "testing-library/no-debugging-utils": "warn",
   // },
-};
+}

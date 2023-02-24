@@ -19,22 +19,22 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive } from 'vue'
 const form = reactive({
-  login: "",
-  password: "",
-  code: "",
-});
+  login: '',
+  password: '',
+  code: '',
+})
 
 const submit = () => {
-  console.log(form);
-};
+  console.log(form)
+}
 </script>
 
 <script lang="ts">
 export default {
-  name: "Register",
-};
+  name: 'Register',
+}
 </script>
 
 <style lang="less" scoped></style>

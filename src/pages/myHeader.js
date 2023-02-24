@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from 'next/head'
 
 const Header = () => {
   return (
@@ -7,6 +7,6 @@ const Header = () => {
         <title>pika的标题</title>
       </Head>
     </>
-  );
-};
-export default Header;
+  )
+}
+export default Header

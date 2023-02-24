@@ -1,4 +1,4 @@
-import dynamicImportVars from "@rollup/plugin-dynamic-import-vars";
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
 
 export default {
   plugins: [
@@ -6,4 +6,4 @@ export default {
       // options
     }),
   ],
-};
+}

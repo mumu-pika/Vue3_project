@@ -1,5 +1,5 @@
 // import { createApp } from 'vue'
-import "./style.css";
+import './style.css'
 // import App from './App.vue'
 
 // // 引入mitt库
@@ -61,17 +61,17 @@ import "./style.css";
 
 // app.component('Card',Card).mount('#app')
 
-import { createApp, createVNode, render } from "vue";
-import App from "./App.vue";
+import { createApp, createVNode, render } from 'vue'
+import App from './App.vue'
 // 引入状态管理
-import { createPinia, PiniaPluginContext } from "pinia";
+import { createPinia, PiniaPluginContext } from 'pinia'
 
 // 引入路由
-import router from "./router";
+import router from './router'
 
 // 引入element UI
-import ElementUi from "element-plus";
-import "element-plus/dist/index.css";
+import ElementUi from 'element-plus'
+import 'element-plus/dist/index.css'
 
 // // 引入自定义的进度条, 之后将其转为VNode
 // import loadingBar from './components/views/loadingBar.vue'
@@ -83,35 +83,35 @@ import "element-plus/dist/index.css";
 
 // 设置类型别名
 type Options = {
-  key?: string;
-};
+  key?: string
+}
 
 // 设置一个默认的key,用于当key没有传的时候
-const __piniaKey__: string = "piniaKey";
+const __piniaKey__: string = 'piniaKey'
 
 // 定义获取state的函数
 const getStorage = (key: string) => {
   //  因为会报错:‘不能将类型nuLl分配给类型string’ 这里需要断言下为string, 因为三目运算符也已经判断过了
   return localStorage.getItem(key)
     ? JSON.parse(localStorage.getItem(key) as string)
-    : {};
-};
+    : {}
+}
 
 // 定义存储state的函数
 const setStorage = (key: string, value: any) => {
   // 这里value存储成字符串的形式
-  localStorage.setItem(key, JSON.stringify(value));
-};
+  localStorage.setItem(key, JSON.stringify(value))
+}
 
 // 在main.ts中定义插件
 const piniaPlugin = (options: Options) => {
   // 函数柯里化
   return (context: PiniaPluginContext) => {
     // 解构赋值出store
-    const { store } = context;
+    const { store } = context
 
-    const data = getStorage(`${options?.key ?? __piniaKey__}-${store.$id} `);
-    console.log(data);
+    const data = getStorage(`${options?.key ?? __piniaKey__}-${store.$id} `)
+    console.log(data)
 
     // store订阅状态
     store.$subscribe(() => {
@@ -119,27 +119,27 @@ const piniaPlugin = (options: Options) => {
       setStorage(
         `${options?.key ?? __piniaKey__}-${store.$id} `,
         toRaw(store.$state)
-      );
-    });
+      )
+    })
 
     // 这里将getStorage获取到的本地state值直接赋予渲染好的页面
-    return { ...data };
-  };
-};
+    return { ...data }
+  }
+}
 
-const pinia = createPinia();
+const pinia = createPinia()
 
 // 注册pinia的插件
 // 这里的piniaPlugin是pinia帮我们调用的，
 pinia.use(
   piniaPlugin({
-    key: "pinia",
+    key: 'pinia',
   })
-);
+)
 
-const app = createApp(App);
-app.use(pinia);
-app.use(router);
-app.use(ElementUi);
+const app = createApp(App)
+app.use(pinia)
+app.use(router)
+app.use(ElementUi)
 
-app.mount("#app");
+app.mount('#app')

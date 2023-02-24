@@ -12,10 +12,10 @@
 
 <script setup lang="ts">
 type Props = {
-  content?: string;
-};
+  content?: string
+}
 
-defineProps<Props>();
+defineProps<Props>()
 </script>
 
 <style lang="less" scoped>

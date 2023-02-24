@@ -12,28 +12,28 @@
 // import {reactive} from 'vue'
 
 type Props = {
-  modelValue: boolean;
-  title: string;
+  modelValue: boolean
+  title: string
   modelModifiers?: {
     // 这里是在v-model后面添加了.pika这个修饰符，打印出来的结果为true
-    pika: boolean;
-  };
+    pika: boolean
+  }
   titleModifiers?: {
-    pika2: boolean;
-  };
-};
+    pika2: boolean
+  }
+}
 
-const PropsData = defineProps<Props>();
+const PropsData = defineProps<Props>()
 
-const emit = defineEmits(["update:modelValue", "update:title"]);
+const emit = defineEmits(['update:modelValue', 'update:title'])
 
 const close = () => {
-  console.log(PropsData.modelModifiers);
+  console.log(PropsData.modelModifiers)
 
   // 这里根据自定义的修饰符的值，进行
-  emit("update:modelValue", false);
-  emit("update:title", "我变成了小猫猫");
-};
+  emit('update:modelValue', false)
+  emit('update:title', '我变成了小猫猫')
+}
 
 // type names = {
 //   name: string,

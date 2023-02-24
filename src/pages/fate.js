@@ -1,13 +1,13 @@
-import { useState } from "react";
+import { useState } from 'react'
 
 function Fate() {
   // 样式的颜色
-  const [color, setColor] = useState("hotpink");
+  const [color, setColor] = useState('hotpink')
 
   // 修改样式颜色的方法
   const changeColor = () => {
-    setColor(color == "hotpink" ? "skyblue" : "hotpink");
-  };
+    setColor(color == 'hotpink' ? 'skyblue' : 'hotpink')
+  }
 
   return (
     <>
@@ -27,7 +27,7 @@ function Fate() {
         `}
       </style>
     </>
-  );
+  )
 }
 
-export default Fate;
+export default Fate

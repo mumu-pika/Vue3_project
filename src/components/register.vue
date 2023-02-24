@@ -19,17 +19,17 @@
 </template>
 
 <script setup lang="ts">
-import { data } from "./list.json";
-import { useRouter, useRoute } from "vue-router";
+import { data } from './list.json'
+import { useRouter, useRoute } from 'vue-router'
 
 // useRouter()返回router实例
-const router = useRouter();
+const router = useRouter()
 
 // useRoute()返回当前路由地址
-const route = useRoute();
+const route = useRoute()
 
 // find会返回符合条件的对象, 注意这里params的类型RouteParams是字符串类型
-const item = data.find((v) => v.id === Number(route.params.id));
+const item = data.find((v) => v.id === Number(route.params.id))
 </script>
 
 <style>

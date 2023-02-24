@@ -1,16 +1,16 @@
-import { defineStore } from "pinia";
-import { Names } from "./store-name";
+import { defineStore } from 'pinia'
+import { Names } from './store-name'
 type User = {
-  name: string;
-  age: number;
-};
+  name: string
+  age: number
+}
 
 // 这里设置一个change之后的user
 // 同步写法
 const Runner: User = {
-  name: "xixi",
+  name: 'xixi',
   age: 20,
-};
+}
 
 // 下面模拟实现异步修改state
 // const Login = (): Promise<User> => {
@@ -27,19 +27,19 @@ const Runner: User = {
 export const useTestStore = defineStore(Names.TEST, {
   state: () => ({
     user: <User>{
-      name: "pika",
+      name: 'pika',
       age: 18,
     },
-    name: "Heisenberg",
+    name: 'Heisenberg',
   }),
 
   // computed 可以修饰一些值
   getters: {
     newName(): string {
-      return `${this.name}-${this.getUserAge}`;
+      return `${this.name}-${this.getUserAge}`
     },
     getUserAge(): number {
-      return this.user.age;
+      return this.user.age
     },
   },
 
@@ -47,8 +47,8 @@ export const useTestStore = defineStore(Names.TEST, {
   actions: {
     //同步写法
     setUser() {
-      this.user = JSON.parse(JSON.stringify(Runner));
-      this.setName("WW");
+      this.user = JSON.parse(JSON.stringify(Runner))
+      this.setName('WW')
     },
 
     // 异步action
@@ -59,11 +59,11 @@ export const useTestStore = defineStore(Names.TEST, {
     // },
 
     setName(name: string) {
-      this.name = name;
+      this.name = name
     },
 
     setAge() {
-      this.user.age++;
+      this.user.age++
     },
   },
-});
+})

@@ -6,14 +6,14 @@
 </template>
 
 <script setup lang="ts">
-import { getCurrentInstance } from "vue";
+import { getCurrentInstance } from 'vue'
 
 // 获取当前组件实例
-const instance = getCurrentInstance();
+const instance = getCurrentInstance()
 
 const emit = () => {
-  instance?.proxy?.$Bus.emit("on-click", "xixi");
-};
+  instance?.proxy?.$Bus.emit('on-click', 'xixi')
+}
 </script>
 
 <style lang="less" scoped>

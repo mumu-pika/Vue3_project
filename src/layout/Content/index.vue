@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { gsap } from "gsap";
+import { gsap } from 'gsap'
 import {
   defineAsyncComponent,
   markRaw,
@@ -16,24 +16,24 @@ import {
   onDeactivated,
   watch,
   getCurrentInstance,
-} from "vue";
-import Card from "../../components/Card/index.vue";
+} from 'vue'
+import Card from '../../components/Card/index.vue'
 
-import Dialog from "../../components/Dialog/index.vue";
-import Login from "../../components/Login/index.vue";
-import Register from "../../components/Register/index.vue";
+import Dialog from '../../components/Dialog/index.vue'
+import Login from '../../components/Login/index.vue'
+import Register from '../../components/Register/index.vue'
 
-import A from "./A.vue";
-import B from "./B.vue";
+import A from './A.vue'
+import B from './B.vue'
 
-import _ from "lodash"; // 如果lodash报错需要安装ts声明文件库 npm i --save-dev @types/lodash
+import _ from 'lodash' // 如果lodash报错需要安装ts声明文件库 npm i --save-dev @types/lodash
 
-let name = ref<string>("footer");
+let name = ref<string>('footer')
 
 const num = reactive({
   current: 0,
   tweenedNumber: 0,
-});
+})
 
 watch(
   () => num.current,
@@ -42,12 +42,12 @@ watch(
     gsap.to(num, {
       duration: 1,
       tweenedNumber: newValue,
-    });
+    })
   }
-);
+)
 
-let instance = getCurrentInstance();
-console.log(instance);
+let instance = getCurrentInstance()
+console.log(instance)
 </script>
 
 <style lang="less" scoped>

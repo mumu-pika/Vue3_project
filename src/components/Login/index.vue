@@ -25,39 +25,39 @@ import {
   onDeactivated,
   onMounted,
   onUnmounted,
-} from "vue";
+} from 'vue'
 const form = reactive({
-  login: "",
-  password: "",
-  code: "",
-});
+  login: '',
+  password: '',
+  code: '',
+})
 
 const submit = () => {
-  console.log(form);
-};
+  console.log(form)
+}
 
 // 考虑keep-alive下组件生命周期
 onMounted(() => {
-  console.log("login onMounted");
-});
+  console.log('login onMounted')
+})
 
 onActivated(() => {
-  console.log("login onActivated");
-});
+  console.log('login onActivated')
+})
 
 onDeactivated(() => {
-  console.log("login onDeactivated");
-});
+  console.log('login onDeactivated')
+})
 
 onUnmounted(() => {
-  console.log("login onUnmounted");
-});
+  console.log('login onUnmounted')
+})
 </script>
 
 <script lang="ts">
 export default {
-  name: "Login",
-};
+  name: 'Login',
+}
 </script>
 
 <style lang="less" scoped></style>

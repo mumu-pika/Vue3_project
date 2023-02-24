@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState } from 'react'
 
 // context是一个JS对象，可以将其存储到一个常量中
 // 这个对象是由context所创建， 会包含react component
@@ -6,7 +6,7 @@ import { createContext, useState } from "react";
 const FavoritesContext = createContext({
   favorites: [],
   totalFavorites: 0, // 收藏夹总数
-});
+})
 
 // 此外，我们还需要有能够添加/删除收藏夹的这些值
 // 为此，我们需要一个组件FavoritesContextProvider
@@ -16,7 +16,7 @@ function FavoritesContextProvider(props) {
   // 在这里我们可以用状态来管理上下文中的值
   // 当我们修改状态时候，这里的这个组件会在执行，这个组件的更新会引起其包裹的所有关联的更新
   // 也即如果我们改变在这个组件中上下文的值的时候，所有正在监听这个上下文的组件将会被更新
-  const [userFavorites, setUserFavorites] = useState([]);
+  const [userFavorites, setUserFavorites] = useState([])
 
   // 修改状态值的回调
   // 我们不仅仅想让状态可以让不同组件访问，也需要不同组件能够访问操作改变状态值的函数
@@ -29,33 +29,33 @@ function FavoritesContextProvider(props) {
     // setUserFavorites(userFavorites.concat(favoriteMeetup))
     // 这种写法能保证我们此处的状态更新
     setUserFavorites((prevUserFavorites) => {
-      return prevUserFavorites.concat(favoriteMeetup);
-    });
+      return prevUserFavorites.concat(favoriteMeetup)
+    })
   }
 
   // 移除收藏
   function removeFavoriteHandler(meetupId) {
     setUserFavorites((prevUserFavorites) => {
       // filter会过滤掉返回false的项
-      return prevUserFavorites.filter((meetup) => meetup.id !== meetupId);
-    });
+      return prevUserFavorites.filter((meetup) => meetup.id !== meetupId)
+    })
   }
 
   // 判断是否为收藏夹
   function itemIsFavoriteHandler() {
     // some只要其中一项为true便为true
-    return userFavorites.some((meetup) => meetup.id === meetupId);
+    return userFavorites.some((meetup) => meetup.id === meetupId)
   }
 
   // 存储上下文
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
-  };
+  }
 
   return (
     <FavoritesContext.Provider value={context}>
       {props.children}
     </FavoritesContext.Provider>
-  );
+  )
 }

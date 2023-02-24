@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 function B() {
   return (
@@ -8,7 +8,7 @@ function B() {
         <a>返回首页</a>
       </Link>
     </>
-  );
+  )
 }
 
-export default B;
+export default B
