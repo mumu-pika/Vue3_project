@@ -13,13 +13,13 @@ function Time() {
   }
 
   return (
-    <>
+    <div>
       <div>显示时间为:{nowTime} </div>
       <One />
       <div>
         <button onClick={changeTime}>改变时间格式</button>
       </div>
-    </>
+    </div>
   )
 }
 

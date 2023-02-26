@@ -33,6 +33,7 @@ declare module 'vue-router' {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
+    // 路由懒加载, 异步加载组件
     component: () => import('@/components/views/Login.vue'),
     meta: {
       title: '登录页面',
